@@ -49,7 +49,7 @@ You can define a custom message for each validator like that:
 ```golang
 type User struct {
     Name  string `zius:"required:Name is required"`
-    Email string `zius:"required:Name is required,email:Email is required"`
+    Email string `zius:"required:Email is required,email:Email must be a valid email"`
 }
 ```
 
