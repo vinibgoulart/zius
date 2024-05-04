@@ -7,7 +7,7 @@ Zius is a Golang struct validator library.
 To install Zius, you can use `go get`:
 
 ```sh
-go get github.com/yourusername/zius
+go get github.com/vinibgoulart/zius
 ```
 
 ## Usage
