@@ -11,7 +11,7 @@ type EmailValidator struct {
 }
 
 func (v *EmailValidator) Validate(value interface{}) error {
-	message := GetMessage(v.TagMessage, fmt.Sprintf("%s must be a valid email", *v.Field))
+	message := GetMessage(v.TagMessage, fmt.Sprintf("%s must be a valid email", *v.StructField))
 
 	regex := GetRegexForTag(EmailTag)
 	ok := regexp.MustCompile(regex).MatchString(value.(string))

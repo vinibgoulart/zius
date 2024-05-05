@@ -9,13 +9,13 @@ type Validator interface {
 }
 
 type BaseValidator struct {
-	Field      *string
-	TagValue   *string
-	TagMessage *string
+	StructField *string
+	TagValue    *string
+	TagMessage  *string
 }
 
-func GetValidator(pt *parser.ParsedTag, field *string) (Validator, bool) {
-	baseValidator := BaseValidator{TagMessage: pt.TagMessage, TagValue: pt.TagValue, Field: field}
+func GetValidator(pt *parser.ParsedTag, structField *string, structType *interface{}) (Validator, bool) {
+	baseValidator := BaseValidator{TagMessage: pt.TagMessage, TagValue: pt.TagValue, StructField: structField}
 
 	switch *pt.TagType {
 	case RequiredTag:

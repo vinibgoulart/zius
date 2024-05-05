@@ -13,7 +13,7 @@ type EqualsValidator struct {
 }
 
 func (v *EqualsValidator) Validate(value interface{}) error {
-	message := GetMessage(v.TagMessage, fmt.Sprintf("%s must be equals to %s", *v.Field, *v.TagValue))
+	message := GetMessage(v.TagMessage, fmt.Sprintf("%s must be equals to %s", *v.StructField, *v.TagValue))
 
 	regex := parser.CommaToVerticalBar(v.TagValue)
 	ok := regexp.MustCompile(regex).MatchString(value.(string))
