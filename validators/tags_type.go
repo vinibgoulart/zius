@@ -9,4 +9,5 @@ const (
 	PhoneTag    = "phone"
 	RegexTag    = "regex"
 	EqualsTag   = "equals"
+	StructTag   = "struct"
 )
