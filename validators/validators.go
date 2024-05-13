@@ -1,6 +1,8 @@
 package validators
 
 import (
+	"reflect"
+
 	"github.com/vinibgoulart/zius/parser"
 )
 
@@ -10,12 +12,18 @@ type Validator interface {
 
 type BaseValidator struct {
 	StructField *string
+	StructType  *reflect.Type
 	TagValue    *string
 	TagMessage  *string
 }
 
-func GetValidator(pt *parser.ParsedTag, structField *string, structType *interface{}) (Validator, bool) {
-	baseValidator := BaseValidator{TagMessage: pt.TagMessage, TagValue: pt.TagValue, StructField: structField}
+func GetValidator(pt *parser.ParsedTag, structField *string, structType *reflect.Type) (Validator, bool) {
+	baseValidator := BaseValidator{
+		TagMessage:  pt.TagMessage,
+		TagValue:    pt.TagValue,
+		StructField: structField,
+		StructType:  structType,
+	}
 
 	switch *pt.TagType {
 	case RequiredTag:
@@ -34,6 +42,8 @@ func GetValidator(pt *parser.ParsedTag, structField *string, structType *interfa
 		return &RegexValidator{baseValidator}, true
 	case EqualsTag:
 		return &EqualsValidator{baseValidator}, true
+	case StructTag:
+		return nil, true
 	default:
 		return nil, false
 	}
