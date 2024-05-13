@@ -19,8 +19,8 @@ type WithStructAddress struct {
 
 type WithStruct struct {
 	Name    string            `zius:"required,string:Name must be a string"`
-	Address WithStructAddress `zius:"required,struct={WithStructAddress}:Address is required"`
-	Clothes WithStructClothes `zius:"required,struct={WithStructClothes}:Clothes is required"`
+	Address WithStructAddress `zius:"required,struct:Address is required"`
+	Clothes WithStructClothes `zius:"required,struct:Clothes is required"`
 }
 
 func main() {
