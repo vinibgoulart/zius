@@ -11,7 +11,7 @@ import (
 type Person struct {
 	Name  string `zius:"required:Name is required" validate:"required"`
 	Age   int    `zius:"required:Age is required" validate:"required"`
-	Email string `zius:"required:Email is required" validate:"required,email"`
+	Email string `zius:"required:Email is required,email" validate:"required,email"`
 }
 
 func main() {
