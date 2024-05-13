@@ -11,7 +11,7 @@ type RegexValidator struct {
 }
 
 func (v *RegexValidator) Validate(value interface{}) error {
-	message := GetMessage(v.TagMessage, fmt.Sprintf("%s must be a valid regex %s", *v.StructField, *v.TagValue))
+	message := MessageGet(v.TagMessage, fmt.Sprintf("%s must be a valid regex %s", *v.StructField, *v.TagValue))
 
 	ok := regexp.MustCompile(*v.TagValue).MatchString(value.(string))
 	if !ok {

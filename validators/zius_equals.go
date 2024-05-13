@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/vinibgoulart/zius/parser"
+	"github.com/vinibgoulart/zius/helpers"
 )
 
 type EqualsValidator struct {
@@ -13,9 +13,9 @@ type EqualsValidator struct {
 }
 
 func (v *EqualsValidator) Validate(value interface{}) error {
-	message := GetMessage(v.TagMessage, fmt.Sprintf("%s must be equals to %s", *v.StructField, *v.TagValue))
+	message := MessageGet(v.TagMessage, fmt.Sprintf("%s must be equals to %s", *v.StructField, *v.TagValue))
 
-	regex := parser.CommaToVerticalBar(v.TagValue)
+	regex := helpers.CommaToVerticalBar(v.TagValue)
 	ok := regexp.MustCompile(regex).MatchString(value.(string))
 	if !ok {
 		return errors.New(message)
