@@ -15,7 +15,7 @@ var tagRegexMap = map[string]string{
 	PhoneTag:   PhoneRegex,
 }
 
-func GetRegexForTag(tag string) string {
+func RegexForTagGet(tag string) string {
 	regex, exists := tagRegexMap[tag]
 	if !exists {
 		panic("regex not found for tag " + tag)

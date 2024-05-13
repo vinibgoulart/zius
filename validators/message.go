@@ -1,6 +1,6 @@
 package validators
 
-func GetMessage(message *string, fallback string) string {
+func MessageGet(message *string, fallback string) string {
 	if *message == "" {
 		return fallback
 	}
