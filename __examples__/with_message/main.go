@@ -15,7 +15,7 @@ func main() {
 		Age:  30,
 	}
 
-	err := zius.Validate(wm)
+	err := zius.Validate(*wm)
 
 	if err != nil {
 		panic(err)
