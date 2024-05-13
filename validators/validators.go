@@ -42,6 +42,8 @@ func GetValidator(pt *parser.ParsedTag, structField *string, structType *reflect
 		return &RegexValidator{baseValidator}, true
 	case EqualsTag:
 		return &EqualsValidator{baseValidator}, true
+	case ArrayTag:
+		return &ArrayValidator{baseValidator}, true
 	case StructTag:
 		return nil, true
 	default:

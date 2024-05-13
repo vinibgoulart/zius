@@ -10,4 +10,5 @@ const (
 	RegexTag    = "regex"
 	EqualsTag   = "equals"
 	StructTag   = "struct"
+	ArrayTag    = "array"
 )
