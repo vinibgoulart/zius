@@ -11,7 +11,7 @@ type StringValidator struct {
 }
 
 func (v *StringValidator) Validate(value interface{}) error {
-	message := MessageGet(v.TagMessage, fmt.Sprintf("%s.%s must be a string", *v.StructField, *v.StructField))
+	message := MessageGet(v.TagMessage, fmt.Sprintf("%s must be a string", *v.StructField))
 
 	regex := RegexForTagGet(StringTag)
 	ok := regexp.MustCompile(regex).MatchString(value.(string))
