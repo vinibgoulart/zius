@@ -41,6 +41,8 @@ Zius comes with a number of built-in validators:
 - `phone`: Validates that the field is a valid phone number
 - `regex`: Validates the field against a custom regular expression
 - `equals`: Validates the field against a custom value
+- `array`: Validates that the field is an array
+- `struct`: Validates that the field is a struct
 
 ### Custom Messages
 
