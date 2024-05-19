@@ -9,6 +9,14 @@ import (
 	"github.com/vinibgoulart/zius/validators"
 )
 
+type Error struct {
+	Struct string
+	Field  string
+	Error  error
+}
+
+var AllErrors = make([]Error, 0)
+
 func StructMapAll(s interface{}) []interface{} {
 	result := make([]interface{}, 0)
 
@@ -29,9 +37,9 @@ func StructMapAll(s interface{}) []interface{} {
 func StructValidate(s interface{}) error {
 	for i := 0; i < reflect.TypeOf(s).NumField(); i++ {
 		field := reflect.TypeOf(s).Field(i)
-		zius := field.Tag.Get("zius")
+		_zius := field.Tag.Get("zius")
 
-		tags := helpers.CommaIgnoringTagValueSplit(&zius)
+		tags := helpers.CommaIgnoringTagValueSplit(&_zius)
 
 		for _, tag := range tags {
 			parsedTag := parser.ParseTag(&tag)
@@ -50,7 +58,11 @@ func StructValidate(s interface{}) error {
 			err := validator.Validate(value)
 
 			if err != nil {
-				return err
+				AllErrors = append(AllErrors, Error{
+					Struct: reflect.TypeOf(s).Name(),
+					Field:  field.Name,
+					Error:  err,
+				})
 			}
 		}
 	}

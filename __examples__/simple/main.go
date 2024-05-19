@@ -17,7 +17,7 @@ func main() {
 		Gender: "BOY",
 	}
 
-	err := zius.Validate(*s)
+	_, err := zius.Validate(*s)
 
 	if err != nil {
 		panic(err)

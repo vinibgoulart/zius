@@ -37,7 +37,7 @@ func main() {
 		},
 	}
 
-	err := zius.Validate(*ws)
+	_, err := zius.Validate(*ws)
 
 	if err != nil {
 		panic(err)

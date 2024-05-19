@@ -6,7 +6,7 @@ import (
 	_struct "github.com/vinibgoulart/zius/struct"
 )
 
-func Validate(s interface{}) error {
+func Validate(s interface{}) ([]_struct.Error, error) {
 	if reflect.TypeOf(s).Kind() != reflect.Struct {
 		panic("zius requires a struct")
 	}
@@ -16,9 +16,13 @@ func Validate(s interface{}) error {
 	for _, s := range allStructs {
 		err := _struct.StructValidate(s)
 		if err != nil {
-			return err
+			return nil, err
 		}
 	}
 
-	return nil
+	if len(_struct.AllErrors) > 0 {
+		return _struct.AllErrors, _struct.AllErrors[0].Error
+	}
+
+	return nil, nil
 }

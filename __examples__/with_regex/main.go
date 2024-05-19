@@ -21,7 +21,7 @@ func main() {
 		Star:  "S20",
 	}
 
-	err := zius.Validate(*wr)
+	_, err := zius.Validate(*wr)
 
 	if err != nil {
 		panic(err)

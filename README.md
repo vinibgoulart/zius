@@ -25,10 +25,32 @@ type User struct {
 }
 
 // Validate your struct
-func ValidateUser(user User) error {
+func ValidateUser(user User) []Error, error {
     return zius.Validate(user)
 }
 ```
+
+### Getting Errors
+
+The `Validate` function returns a slice of `Error` and an error.
+
+```golang
+errors, err := ValidateUser(user)
+```
+
+The `Error` struct has the following fields: `Struct`, `Field`, and `Error`.
+
+```golang
+type Error struct {
+    Struct string
+    Field  string
+    Error  error
+}
+```
+
+The error field contains the first error message.
+
+Check the `__examples__/with_multiple_errors/main.go` file for a complete example.
 
 ## Validators
 
