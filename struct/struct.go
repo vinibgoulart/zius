@@ -48,9 +48,6 @@ func StructValidate(s interface{}) error {
 
 			value := reflect.ValueOf(s).Field(i).Interface()
 
-			fmt.Println(*parsedTag)
-			fmt.Println(value)
-
 			validator, ok := validators.GetValidator(parsedTag, &field.Name, &field.Type)
 			if !ok {
 				return fmt.Errorf("unknown validator: %s", *parsedTag.TagType)
@@ -61,8 +58,6 @@ func StructValidate(s interface{}) error {
 			}
 
 			err := validator.Validate(value)
-
-			fmt.Println(AllErrors)
 
 			if err != nil {
 				AllErrors = append(AllErrors, Error{
